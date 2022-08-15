@@ -92,7 +92,7 @@ const userById = async (req, res) =>{
 const deleteUser = async (req, res) =>{
     const user = await User.findByPk(req.body.id);
     if (user === null) {
-        return res.status(200).send({"message": 'Not found!'})
+        return res.status(400).send({"message": 'Not found!'})
     } else {
         await user.destroy().then(()=>{
             return res.status(200).send({"message": "user deleted"})
