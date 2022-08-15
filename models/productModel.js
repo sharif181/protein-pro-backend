@@ -3,10 +3,6 @@ module.exports = (sequelize, DataTypes) =>{
         title:{
             type: DataTypes.STRING,
             allowNull: false
-        },
-        product_type: {
-            type: DataTypes.STRING,
-            allowNull: false
         }
         
     })
