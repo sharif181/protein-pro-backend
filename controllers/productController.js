@@ -1,4 +1,5 @@
 const db = require('../models')
+const url = require('url');
 
 const Product = db.products
 const Variant = db.variants
@@ -26,6 +27,19 @@ const productById = async (req, res) =>{
     return res.status(200).send(product)
 }
 
+const productByType = async (req, res) =>{
+    const queryObject = url.parse(req.url, true).query;
+    const products = await Product.findAll({
+        where: {
+            product_type: queryObject.product_type,
+        }, include: Variant
+    })
+    if(products === null){
+        return res.status(400).send({"message": "product not found"})
+    }
+    return res.status(200).send(products)
+}
+
 const deleteProduct = async (req, res) =>{
     const product = await Product.findByPk(req.body.id);
     if (product === null) {
@@ -43,14 +57,14 @@ const updateProduct = async (req, res)=>{
         return res.status(400).send({"message": 'Not found!'})
     } else {
         product.set(req.body)
-        req.body.variants.map(async item=>{
-            const variant = await Variant.findByPk(item.id)
-            variant.set(item)
-            await variant.save()
-        })
+        // req.body.variants.map(async item=>{
+        //     const variant = await Variant.findByPk(item.id)
+        //     variant.set(item)
+        //     await variant.save()
+        // })
         await product.save()
         return res.status(200).send({"message": "updated successfully"})
     }
 }
 
-module.exports = { addProduct, allProduct, productById, deleteProduct, updateProduct}
+module.exports = { addProduct, allProduct, productById, deleteProduct, updateProduct, productByType}

@@ -1,14 +1,14 @@
 const router = require("express").Router();
 const {tokenCheckMiddleware} = require('../middleware/tokenValidator')
-const { addProduct, allProduct, productById, deleteProduct, updateProduct } = require('../controllers/productController')
+const { addProduct, allProduct, productById, deleteProduct, updateProduct, productByType } = require('../controllers/productController')
 
 
-
-router.post('/create', tokenCheckMiddleware, addProduct)
-router.get('/list', tokenCheckMiddleware, allProduct)
-router.get('/:id', tokenCheckMiddleware, productById)
-router.delete('/delete', tokenCheckMiddleware, deleteProduct)
-router.patch('/update', tokenCheckMiddleware, updateProduct)
+router.get('/by_type', productByType)
+router.post('/create', addProduct)
+router.get('/list', allProduct)
+router.get('/:id', productById)
+router.delete('/delete', deleteProduct)
+router.patch('/update', updateProduct)
 
 
 module.exports = router

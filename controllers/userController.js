@@ -103,7 +103,7 @@ const deleteUser = async (req, res) =>{
 const updateUser = async (req, res) =>{
     const user = await User.findByPk(req.body.id);
     if (user === null) {
-        return res.status(200).send({"message": 'Not found!'})
+        return res.status(400).send({"message": 'Not found!'})
     } else {
         let data = {
             username: req.body.username ? req.body.username : user.username,
