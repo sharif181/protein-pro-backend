@@ -1,9 +1,9 @@
 const db = require('../models')
 const {genSaltSync, hashSync, compareSync} = require('bcrypt')
-const { sign } = require('jsonwebtoken')
+const { sign } = require('jsonwebtoken');
+const { order } = require('../models');
 
 const User = db.users
-
 
 const validateEmail = (email) => {
     return String(email)
@@ -75,7 +75,7 @@ const login = async (req, res) =>{
 
 
 const userList = async (req, res) =>{
-    const users = await User.findAll({attributes: ['id', 'username', 'first_name', 'last_name', 'email', 'createdAt', 'updatedAt']})
+    let users = await User.findAll({attributes: { exclude: ['password'] }, include: order})
     return res.status(200).send(users)
 }
 

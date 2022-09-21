@@ -27,8 +27,11 @@ db.sequelize = sequelize
 db.users = require('./userModel')(sequelize, DataTypes)
 db.products = require('./productModel')(sequelize, DataTypes)
 db.variants = require('./variantModel')(sequelize, DataTypes)
+db.order = require('./order')(sequelize, DataTypes)
+
 
 db.products.hasMany(db.variants, {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
+db.users.hasMany(db.order, {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
 
 db.sequelize.sync({force: false})
 .then(()=>{
