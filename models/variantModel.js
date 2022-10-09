@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) =>{
         price: {
             type: DataTypes.FLOAT,
             allowNull: false
+        },
+        stripe_price_id:{
+            type: DataTypes.STRING,
+            allowNull: false
         }
         
     })

@@ -7,8 +7,11 @@ module.exports = (sequelize, DataTypes) =>{
         product_type: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        stripe_pro_id:{
+            type: DataTypes.STRING,
+            allowNull: false
         }
-        
     })
     return Product
 }

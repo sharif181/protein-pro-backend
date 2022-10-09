@@ -1,17 +1,38 @@
 const db = require('../models')
 const url = require('url');
+const stripe = require('stripe')(`${process.env.STRIPE_SEC}`);
+
 
 const Product = db.products
 const Variant = db.variants
 
 
 const addProduct = async (req, res)=>{
-    await Product.create(req.body, {include:[Variant]}).then((product)=>{
-        return res.status(200).send(product)
-    }).catch((err)=>{
-        console.log(err);
-        res.status(400).send({"message": err.errors[0].message})
-    })
+    const product = await stripe.products.create({
+        name: req.body.title,
+      });
+    
+    if (product){
+        req.body.stripe_pro_id=product.id
+        variant_len=req.body.variants.length
+        for(let i=0;i<variant_len;i++){
+            const price = await stripe.prices.create({
+                unit_amount: req.body.variants[i].price*100,
+                currency: process.env.CURRENCY,
+                product: product.id,
+              });
+            req.body.variants[i].stripe_price_id=price.id
+        }
+        await Product.create(req.body, {include:[Variant]}).then((product)=>{
+            return res.status(200).send("product created")
+        }).catch((err)=>{
+            console.log(err);
+            res.status(400).send({"message": err.errors[0].message})
+        })
+    }else{ 
+        return res.status(400).send("product not created") 
+    }
+    
 }
 
 const allProduct = async (req, res)=>{
