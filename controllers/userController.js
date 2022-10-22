@@ -2,6 +2,7 @@ const db = require('../models')
 const {genSaltSync, hashSync, compareSync} = require('bcrypt')
 const { sign } = require('jsonwebtoken');
 const { order } = require('../models');
+const { verify } = require('jsonwebtoken');
 
 const User = db.users
 
@@ -117,4 +118,45 @@ const updateUser = async (req, res) =>{
     } 
 }
 
-module.exports = {addUser, login, userList, userById, deleteUser, updateUser}
+const getLoingUserId = async (req, res) =>{
+    // if (req.headers && req.headers.authorization) {
+        // var authorization = req.headers.authorization.split(' ')[1],
+        //     decoded;
+    //     try {
+    //         decoded = verify(authorization, secret.secretToken);
+    //     } catch (e) {
+    //         return res.status(401).send('unauthorized');
+    //     }
+    //     var userId = decoded.id;
+    //     // Fetch the user by id 
+    //     User.findOne({_id: userId}).then(function(user){
+    //         // Do something with the user
+    //         return res.send(200);
+    //     });
+    // }
+    // return res.send(500);
+    
+    let token = req.get('authorization')
+    if(token){
+        token = token.slice(7);
+        verify(token, process.env.PASS_HASH_CODE, (err, decoded)=>{
+            if(err){
+                res.json({
+                    success: 0,
+                    message: "invalid token"
+                })
+            }else{
+                req.headers.authorization.split(' ')[1],decoded;
+                return res.status(200).send(decoded)
+            }
+        })
+    }else{
+        res.json({
+            success: 0,
+            message: "Access denied token required, need token"
+        })
+    }
+}
+
+
+module.exports = {addUser, login, userList, userById, deleteUser, updateUser, getLoingUserId}
