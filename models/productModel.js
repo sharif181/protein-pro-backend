@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) =>{
         stripe_pro_id:{
             type: DataTypes.STRING,
             allowNull: false
+        },
+        image_path:{
+            type: DataTypes.STRING,
+            allowNull: false
         }
     })
     return Product
