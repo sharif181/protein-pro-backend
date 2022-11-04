@@ -27,6 +27,22 @@ module.exports = (sequelize, DataTypes) =>{
         sub_3_ltr:{
             type: DataTypes.STRING,
             allowNull: false
+        },
+        ag:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        region:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        labs:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        design_asset:{
+            type: DataTypes.STRING,
+            allowNull: false
         }
     })
     return proteinTable

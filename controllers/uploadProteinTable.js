@@ -17,7 +17,11 @@ const loadCsv = async (req, res)=>{
             amino_acid_3_ltr: row[3],
             sub: row[4],
             sub_1_ltr: row[5],
-            sub_3_ltr: row[6]
+            sub_3_ltr: row[6],
+            ag: row[7],
+            region: row[8],
+            labs: row[9],
+            design_asset: row[10]
 
         }
         proteinTable.create(data).then((item)=>{
