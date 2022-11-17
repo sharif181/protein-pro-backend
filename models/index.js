@@ -31,6 +31,10 @@ db.order = require('./order')(sequelize, DataTypes)
 db.contactUs = require('./contactUsModel')(sequelize, DataTypes)
 db.shareSucessStory = require('./shareSuccessStory')(sequelize, DataTypes)
 db.proteinTable = require('./proteinTable')(sequelize, DataTypes)
+db.protein_2_table = require('./protein_2_table')(sequelize, DataTypes)
+db.protein_3_table = require('./protein_3_table')(sequelize, DataTypes)
+db.protein_4_table = require('./protein_4_table')(sequelize, DataTypes)
+db.protein_5_table = require('./protein_5_table')(sequelize, DataTypes)
 
 
 db.products.hasMany(db.variants, {onDelete: 'CASCADE', onUpdate: 'CASCADE'})
