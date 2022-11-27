@@ -28,7 +28,7 @@ const loadCsv = async (req, res)=>{
 
         }
         proteinTable.create(data).then((item)=>{
-            console.log(item)
+            
         }).catch((err)=>{
             console.log(err);
             res.status(400).send({"message": err.errors[0].message})
@@ -58,7 +58,6 @@ const protien_2_loadCsv = async (req, res)=>{
 
         }
         protein_2_table.create(data).then((item)=>{
-            console.log(item)
         }).catch((err)=>{
             console.log(err);
             res.status(400).send({"message": err.errors[0].message})
@@ -88,7 +87,7 @@ const protien_3_loadCsv = async (req, res)=>{
 
         }
         protein_3_table.create(data).then((item)=>{
-            console.log(item)
+            
         }).catch((err)=>{
             console.log(err);
             res.status(400).send({"message": err.errors[0].message})
@@ -118,7 +117,7 @@ const protien_4_loadCsv = async (req, res)=>{
 
         }
         protein_4_table.create(data).then((item)=>{
-            console.log(item)
+            
         }).catch((err)=>{
             console.log(err);
             res.status(400).send({"message": err.errors[0].message})
@@ -148,7 +147,7 @@ const protien_5_loadCsv = async (req, res)=>{
 
         }
         protein_5_table.create(data).then((item)=>{
-            console.log(item)
+            
         }).catch((err)=>{
             console.log(err);
             res.status(400).send({"message": err.errors[0].message})

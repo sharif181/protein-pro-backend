@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) =>{
         image_path:{
             type: DataTypes.STRING,
             allowNull: false
+        },
+        checkout_image_path:{
+            type: DataTypes.STRING,
+            allowNull: false
         }
     })
     return Product

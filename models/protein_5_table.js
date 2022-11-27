@@ -2,47 +2,47 @@ module.exports = (sequelize, DataTypes) =>{
     const protein_5_table = sequelize.define("protein_5_table", {
         position:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         amino_acid: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         amino_acid_1_ltr:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         amino_acid_3_ltr:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         sub:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         sub_1_ltr:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         sub_3_ltr:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         ag:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         region:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         labs:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         design_asset:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         }
     })
     return protein_5_table
