@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) =>{
         user_id:{
             type: DataTypes.STRING,
             allowNull: false
+        },
+        user_email:{
+            type: DataTypes.STRING,
+            allowNull: false
         }
     })
     return ShareSuccessStory

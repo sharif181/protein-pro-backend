@@ -24,7 +24,7 @@ const addProduct = async (req, res)=>{
             req.body.variants[i].stripe_price_id=price.id
         }
         await Product.create(req.body, {include:[Variant]}).then((product)=>{
-            return res.status(200).send("product created")
+            return res.status(200).send(product)
         }).catch((err)=>{
             console.log(err);
             res.status(400).send({"message": err.errors[0].message})
@@ -84,7 +84,7 @@ const updateProduct = async (req, res)=>{
         //     await variant.save()
         // })
         await product.save()
-        return res.status(200).send({"message": "updated successfully"})
+        return res.status(200).send(product)
     }
 }
 
