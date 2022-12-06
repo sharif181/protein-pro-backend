@@ -78,14 +78,60 @@ const updateProduct = async (req, res)=>{
         return res.status(400).send({"message": 'Not found!'})
     } else {
         product.set(req.body)
-        // req.body.variants.map(async item=>{
-        //     const variant = await Variant.findByPk(item.id)
-        //     variant.set(item)
-        //     await variant.save()
-        // })
         await product.save()
-        return res.status(200).send(product)
+        req.body.variants.map(async item =>{
+            if(item.id !== null){
+                const variant = await Variant.findByPk(item.id)
+                if(variant === null){
+                    const price = await stripe.prices.create({
+                        unit_amount: item.price*100,
+                        currency: process.env.CURRENCY,
+                        product: product.stripe_pro_id,
+                      });
+                    const data = {
+                        title: item.title,
+                        price: item.price,
+                        stripe_price_id: price.id,
+                        productId: product.id
+                    }
+                    await Variant.create(data).then((variant)=>{
+                        console.log("new variant created")
+                        product.reload()
+                    }).catch((err)=>{
+                        console.log(err);
+                        res.status(400).send({"message": err.errors[0].message})
+                    })
+
+                }else{
+                    variant.set(item)
+                    variant.save()
+                }
+            }else{
+                const price = await stripe.prices.create({
+                    unit_amount: item.price*100,
+                    currency: process.env.CURRENCY,
+                    product: product.stripe_pro_id,
+                  });
+                const data = {
+                    title: item.title,
+                    price: item.price,
+                    stripe_price_id: price.id,
+                    productId: product.id
+                }
+                await Variant.create(data).then((variant)=>{
+                    console.log("new variant created")
+                    product.reload()
+                }).catch((err)=>{
+                    console.log(err);
+                    res.status(400).send({"message": err.errors[0].message})
+                })
+            }
+        })
+        // const updated_product = await Product.findByPk(req.body.id, {include: Variant});
+        // product.reload();
+        return res.status(200).send({"message": "success", "code": 1})
     }
+    
 }
 
 module.exports = { addProduct, allProduct, productById, deleteProduct, updateProduct, productByType}
