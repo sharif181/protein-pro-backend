@@ -280,5 +280,35 @@ const protein_5_query = async(req, res)=>{
     
 }
 
+
+const position_low_max = async(req, res) =>{
+    let result = {}
+    let list = await table.findAll()
+    let min_val = Math.min(...list.map(o => parseInt(o.position)))
+    let max_val = Math.max(...list.map(o => parseInt(o.position)))
+    result['spike_table'] = {"min": min_val, "max": max_val}
+    
+    list = await table_2.findAll()
+    min_val = Math.min(...list.map(o => parseInt(o.position)))
+    max_val = Math.max(...list.map(o => parseInt(o.position)))
+    result['table_2'] = {"min": min_val, "max": max_val}
+
+    list = await table_3.findAll()
+    min_val = Math.min(...list.map(o => parseInt(o.position)))
+    max_val = Math.max(...list.map(o => parseInt(o.position)))
+    result['table_3'] = {"min": min_val, "max": max_val}
+
+    list = await table_4.findAll()
+    min_val = Math.min(...list.map(o => parseInt(o.position)))
+    max_val = Math.max(...list.map(o => parseInt(o.position)))
+    result['table_4'] = {"min": min_val, "max": max_val}
+
+    list = await table_5.findAll()
+    min_val = Math.min(...list.map(o => parseInt(o.position)))
+    max_val = Math.max(...list.map(o => parseInt(o.position)))
+    result['table_5'] = {"min": min_val, "max": max_val}
+    return res.send(result).status(200)
+}
+
 module.exports={proteinLabGraph, protein_2_LabGraph, protein_3_LabGraph, protein_4_LabGraph, protein_5_LabGraph, 
-    protein_1_query, protein_2_query, protein_3_query, protein_4_query, protein_5_query}
+    protein_1_query, protein_2_query, protein_3_query, protein_4_query, protein_5_query, position_low_max}
