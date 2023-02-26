@@ -9,7 +9,7 @@ const Variant = db.variants
 
 const addProduct = async (req, res)=>{
     const product = await stripe.products.create({
-        name: req.body.title,
+        name: req.body.protein_name,
       });
     
     if (product){
@@ -52,7 +52,7 @@ const productByType = async (req, res) =>{
     const queryObject = url.parse(req.url, true).query;
     const products = await Product.findAll({
         where: {
-            product_type: queryObject.product_type,
+            type: queryObject.product_type,
         }, include: Variant
     })
     if(products === null){
@@ -62,7 +62,8 @@ const productByType = async (req, res) =>{
 }
 
 const deleteProduct = async (req, res) =>{
-    const product = await Product.findByPk(req.body.id);
+    const product = await Product.findByPk(req.params.id, {include: Variant})
+    console.log(product)
     if (product === null) {
         return res.status(200).send({"message": 'Not found!'})
     } else {
@@ -89,10 +90,13 @@ const updateProduct = async (req, res)=>{
                         product: product.stripe_pro_id,
                       });
                     const data = {
-                        title: item.title,
+                        region: item.region,
                         price: item.price,
                         stripe_price_id: price.id,
-                        productId: product.id
+                        productId: product.id,
+                        position: item.position,
+                        rate: item.rate,
+                        variant_type: item.variant_type,
                     }
                     await Variant.create(data).then((variant)=>{
                         console.log("new variant created")
@@ -113,10 +117,13 @@ const updateProduct = async (req, res)=>{
                     product: product.stripe_pro_id,
                   });
                 const data = {
-                    title: item.title,
+                    region: item.region,
                     price: item.price,
                     stripe_price_id: price.id,
-                    productId: product.id
+                    productId: product.id,
+                    position: item.position,
+                    rate: item.rate,
+                    variant_type: item.variant_type,
                 }
                 await Variant.create(data).then((variant)=>{
                     console.log("new variant created")

@@ -1,16 +1,28 @@
 module.exports = (sequelize, DataTypes) =>{
     const Variant = sequelize.define("variant", {
-        title:{
+        region:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         price: {
             type: DataTypes.FLOAT,
-            allowNull: false
+            allowNull: true
         },
         stripe_price_id:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
+        },
+        position: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        rate: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        variant_type: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
         
     })

@@ -1,10 +1,18 @@
 module.exports = (sequelize, DataTypes) =>{
     const Product = sequelize.define("product", {
-        title:{
+        organism_name:{
             type: DataTypes.STRING,
             allowNull: false
         },
-        product_type: {
+        protein_name:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        amino_acids:{
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        type: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -18,6 +26,10 @@ module.exports = (sequelize, DataTypes) =>{
         },
         checkout_image_path:{
             type: DataTypes.STRING,
+            allowNull: false
+        },
+        complimentary:{
+            type: DataTypes.BOOLEAN,
             allowNull: false
         }
     })

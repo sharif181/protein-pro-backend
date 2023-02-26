@@ -7,7 +7,7 @@ router.get('/by_type', productByType)
 router.post('/create', addProduct)
 router.get('/list', allProduct)
 router.get('/:id', productById)
-router.delete('/delete', deleteProduct)
+router.delete('/delete/:id', deleteProduct)
 router.patch('/update', updateProduct)
 
 
