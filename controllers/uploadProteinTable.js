@@ -38,6 +38,15 @@ const loadCsv = async (req, res)=>{
     return res.status(200).send("saved")
 }
 
+const DeleteAllSpikeTable = async(req, res)=>{
+    proteinTable.destroy({
+        where: {},
+        truncate: true
+      })
+
+    return res.status(200).send({"status:": 1, "message": "Delete all"})
+}
+
 const protien_2_loadCsv = async (req, res)=>{
     const file_path=req.files[0].path
     fs.createReadStream(file_path)
@@ -65,6 +74,15 @@ const protien_2_loadCsv = async (req, res)=>{
     })
 
     return res.status(200).send("saved")
+}
+
+const DeleteAllProtienTable_2 = async(req, res)=>{
+    protein_2_table.destroy({
+        where: {},
+        truncate: true
+      })
+
+    return res.status(200).send({"status:": 1, "message": "Delete all"})
 }
 
 const protien_3_loadCsv = async (req, res)=>{
@@ -97,6 +115,15 @@ const protien_3_loadCsv = async (req, res)=>{
     return res.status(200).send("saved")
 }
 
+const DeleteAllProtienTable_3 = async(req, res)=>{
+    protein_3_table.destroy({
+        where: {},
+        truncate: true
+      })
+
+    return res.status(200).send({"status:": 1, "message": "Delete all"})
+}
+
 const protien_4_loadCsv = async (req, res)=>{
     const file_path=req.files[0].path
     fs.createReadStream(file_path)
@@ -125,6 +152,15 @@ const protien_4_loadCsv = async (req, res)=>{
     })
 
     return res.status(200).send("saved")
+}
+
+const DeleteAllProtienTable_4 = async(req, res)=>{
+    protein_4_table.destroy({
+        where: {},
+        truncate: true
+      })
+
+    return res.status(200).send({"status:": 1, "message": "Delete all"})
 }
 
 const protien_5_loadCsv = async (req, res)=>{
@@ -156,6 +192,14 @@ const protien_5_loadCsv = async (req, res)=>{
 
     return res.status(200).send("saved")
 }
+const DeleteAllProtienTable_5 = async(req, res)=>{
+    protein_5_table.destroy({
+        where: {},
+        truncate: true
+      })
 
+    return res.status(200).send({"status:": 1, "message": "Delete all"})
+}
 
-module.exports = {loadCsv, protien_2_loadCsv, protien_3_loadCsv, protien_4_loadCsv, protien_5_loadCsv}
+module.exports = {loadCsv, protien_2_loadCsv, protien_3_loadCsv, protien_4_loadCsv, protien_5_loadCsv,
+    DeleteAllSpikeTable,DeleteAllProtienTable_2,DeleteAllProtienTable_3,DeleteAllProtienTable_4 ,DeleteAllProtienTable_5}
