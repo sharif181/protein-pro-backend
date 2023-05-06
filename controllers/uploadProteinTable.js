@@ -10,6 +10,7 @@ const protein_5_table = db.protein_5_table
 
 const loadCsv = async (req, res)=>{
     const file_path=req.files[0].path
+    const file_name = req.files[0].originalname
     fs.createReadStream(file_path)
     .pipe(parse({ delimiter: ",", from_line: 2 }))
     .on("data", function (row) {
@@ -35,7 +36,7 @@ const loadCsv = async (req, res)=>{
         })
     })
 
-    return res.status(200).send("saved")
+    return res.status(200).send({"file_name": file_name, "status": "saved"})
 }
 
 const DeleteAllSpikeTable = async(req, res)=>{
@@ -49,6 +50,7 @@ const DeleteAllSpikeTable = async(req, res)=>{
 
 const protien_2_loadCsv = async (req, res)=>{
     const file_path=req.files[0].path
+    const file_name = req.files[0].originalname
     fs.createReadStream(file_path)
     .pipe(parse({ delimiter: ",", from_line: 2 }))
     .on("data", function (row) {
@@ -73,7 +75,7 @@ const protien_2_loadCsv = async (req, res)=>{
         })
     })
 
-    return res.status(200).send("saved")
+    return res.status(200).send({"file_name": file_name, "status": "saved"})
 }
 
 const DeleteAllProtienTable_2 = async(req, res)=>{
@@ -87,6 +89,7 @@ const DeleteAllProtienTable_2 = async(req, res)=>{
 
 const protien_3_loadCsv = async (req, res)=>{
     const file_path=req.files[0].path
+    const file_name = req.files[0].originalname
     fs.createReadStream(file_path)
     .pipe(parse({ delimiter: ",", from_line: 2 }))
     .on("data", function (row) {
@@ -112,7 +115,7 @@ const protien_3_loadCsv = async (req, res)=>{
         })
     })
 
-    return res.status(200).send("saved")
+    return res.status(200).send({"file_name": file_name, "status": "saved"})
 }
 
 const DeleteAllProtienTable_3 = async(req, res)=>{
@@ -126,6 +129,7 @@ const DeleteAllProtienTable_3 = async(req, res)=>{
 
 const protien_4_loadCsv = async (req, res)=>{
     const file_path=req.files[0].path
+    const file_name = req.files[0].originalname
     fs.createReadStream(file_path)
     .pipe(parse({ delimiter: ",", from_line: 2 }))
     .on("data", function (row) {
@@ -151,7 +155,7 @@ const protien_4_loadCsv = async (req, res)=>{
         })
     })
 
-    return res.status(200).send("saved")
+    return res.status(200).send({"file_name": file_name, "status": "saved"})
 }
 
 const DeleteAllProtienTable_4 = async(req, res)=>{
@@ -165,6 +169,7 @@ const DeleteAllProtienTable_4 = async(req, res)=>{
 
 const protien_5_loadCsv = async (req, res)=>{
     const file_path=req.files[0].path
+    const file_name = req.files[0].originalname
     fs.createReadStream(file_path)
     .pipe(parse({ delimiter: ",", from_line: 2 }))
     .on("data", function (row) {
@@ -190,7 +195,7 @@ const protien_5_loadCsv = async (req, res)=>{
         })
     })
 
-    return res.status(200).send("saved")
+    return res.status(200).send({"file_name": file_name, "status": "saved"})
 }
 const DeleteAllProtienTable_5 = async(req, res)=>{
     protein_5_table.destroy({

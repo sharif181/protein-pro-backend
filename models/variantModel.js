@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) =>{
     const Variant = sequelize.define("variant", {
-        region:{
+        pckage_pkg:{
             type: DataTypes.STRING,
             allowNull: true
         },
@@ -9,14 +9,6 @@ module.exports = (sequelize, DataTypes) =>{
             allowNull: true
         },
         stripe_price_id:{
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        position: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        rate: {
             type: DataTypes.STRING,
             allowNull: true
         },

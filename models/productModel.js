@@ -2,36 +2,57 @@ module.exports = (sequelize, DataTypes) =>{
     const Product = sequelize.define("product", {
         organism_name:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         protein_name:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         amino_acids:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         type: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         stripe_pro_id:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         image_path:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         checkout_image_path:{
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         complimentary:{
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: true
+        },
+        pms_tables:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        pmr_tables:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        pmr_positions:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        ncbi_id:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        uniport_id:{
+            type: DataTypes.STRING,
+            allowNull: true
         }
+
     })
     return Product
 }
