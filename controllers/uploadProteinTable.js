@@ -19,13 +19,19 @@ const loadCsv = async (req, res)=>{
             amino_acid: row[1],
             amino_acid_1_ltr: row[2],
             amino_acid_3_ltr: row[3],
-            sub: row[4],
-            sub_1_ltr: row[5],
-            sub_3_ltr: row[6],
-            ag: row[7],
-            region: row[8],
-            labs: row[9],
-            design_asset: row[10]
+            Seq_AOL: row[4],
+            Seq_Sub: row[5],
+            Seq_1_ltr: row[6],
+            Seq_3_ltr: row[7],
+            Seq_AG: row[8],
+            Seq_SOL: row[9],
+            Seq_Sub_Table: row[10],
+            Reg_Sub: row[11],
+            Reg_1_ltr: row[12],
+            Reg_3_ltr: row[13],
+            Reg_AG: row[14],
+            Reg_SOL: row[15],
+            Reg_Sub_Table: row[16]
 
         }
         proteinTable.create(data).then((item)=>{
@@ -59,13 +65,19 @@ const protien_2_loadCsv = async (req, res)=>{
             amino_acid: row[1],
             amino_acid_1_ltr: row[2],
             amino_acid_3_ltr: row[3],
-            sub: row[4],
-            sub_1_ltr: row[5],
-            sub_3_ltr: row[6],
-            ag: row[7],
-            region: row[8],
-            labs: row[9],
-            design_asset: row[10]
+            Seq_AOL: row[4],
+            Seq_Sub: row[5],
+            Seq_1_ltr: row[6],
+            Seq_3_ltr: row[7],
+            Seq_AG: row[8],
+            Seq_SOL: row[9],
+            Seq_Sub_Table: row[10],
+            Reg_Sub: row[11],
+            Reg_1_ltr: row[12],
+            Reg_3_ltr: row[13],
+            Reg_AG: row[14],
+            Reg_SOL: row[15],
+            Reg_Sub_Table: row[16]
 
         }
         protein_2_table.create(data).then((item)=>{
@@ -98,13 +110,19 @@ const protien_3_loadCsv = async (req, res)=>{
             amino_acid: row[1],
             amino_acid_1_ltr: row[2],
             amino_acid_3_ltr: row[3],
-            sub: row[4],
-            sub_1_ltr: row[5],
-            sub_3_ltr: row[6],
-            ag: row[7],
-            region: row[8],
-            labs: row[9],
-            design_asset: row[10]
+            Seq_AOL: row[4],
+            Seq_Sub: row[5],
+            Seq_1_ltr: row[6],
+            Seq_3_ltr: row[7],
+            Seq_AG: row[8],
+            Seq_SOL: row[9],
+            Seq_Sub_Table: row[10],
+            Reg_Sub: row[11],
+            Reg_1_ltr: row[12],
+            Reg_3_ltr: row[13],
+            Reg_AG: row[14],
+            Reg_SOL: row[15],
+            Reg_Sub_Table: row[16]
 
         }
         protein_3_table.create(data).then((item)=>{
@@ -138,13 +156,19 @@ const protien_4_loadCsv = async (req, res)=>{
             amino_acid: row[1],
             amino_acid_1_ltr: row[2],
             amino_acid_3_ltr: row[3],
-            sub: row[4],
-            sub_1_ltr: row[5],
-            sub_3_ltr: row[6],
-            ag: row[7],
-            region: row[8],
-            labs: row[9],
-            design_asset: row[10]
+            Seq_AOL: row[4],
+            Seq_Sub: row[5],
+            Seq_1_ltr: row[6],
+            Seq_3_ltr: row[7],
+            Seq_AG: row[8],
+            Seq_SOL: row[9],
+            Seq_Sub_Table: row[10],
+            Reg_Sub: row[11],
+            Reg_1_ltr: row[12],
+            Reg_3_ltr: row[13],
+            Reg_AG: row[14],
+            Reg_SOL: row[15],
+            Reg_Sub_Table: row[16]
 
         }
         protein_4_table.create(data).then((item)=>{
@@ -178,13 +202,19 @@ const protien_5_loadCsv = async (req, res)=>{
             amino_acid: row[1],
             amino_acid_1_ltr: row[2],
             amino_acid_3_ltr: row[3],
-            sub: row[4],
-            sub_1_ltr: row[5],
-            sub_3_ltr: row[6],
-            ag: row[7],
-            region: row[8],
-            labs: row[9],
-            design_asset: row[10]
+            Seq_AOL: row[4],
+            Seq_Sub: row[5],
+            Seq_1_ltr: row[6],
+            Seq_3_ltr: row[7],
+            Seq_AG: row[8],
+            Seq_SOL: row[9],
+            Seq_Sub_Table: row[10],
+            Reg_Sub: row[11],
+            Reg_1_ltr: row[12],
+            Reg_3_ltr: row[13],
+            Reg_AG: row[14],
+            Reg_SOL: row[15],
+            Reg_Sub_Table: row[16]
 
         }
         protein_5_table.create(data).then((item)=>{

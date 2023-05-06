@@ -16,31 +16,55 @@ module.exports = (sequelize, DataTypes) =>{
             type: DataTypes.STRING,
             allowNull: true
         },
-        sub:{
+        Seq_AOL:{
             type: DataTypes.STRING,
             allowNull: true
         },
-        sub_1_ltr:{
+        Seq_Sub:{
             type: DataTypes.STRING,
             allowNull: true
         },
-        sub_3_ltr:{
+        Seq_1_ltr:{
             type: DataTypes.STRING,
             allowNull: true
         },
-        ag:{
+        Seq_3_ltr:{
             type: DataTypes.STRING,
             allowNull: true
         },
-        region:{
+        Seq_AG:{
             type: DataTypes.STRING,
             allowNull: true
         },
-        labs:{
+        Seq_SOL:{
             type: DataTypes.STRING,
             allowNull: true
         },
-        design_asset:{
+        Seq_Sub_Table:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Reg_Sub:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Reg_1_ltr:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Reg_3_ltr:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Reg_AG:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Reg_SOL:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Reg_Sub_Table:{
             type: DataTypes.STRING,
             allowNull: true
         }
