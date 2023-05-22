@@ -9,9 +9,11 @@ const table_5=db.protein_5_table
 
 
 const proteinLabGraph = async(req, res)=>{
-    const region = parseInt(req.body.region)
+    const matrix = parseInt(req.body.matrix)
+    const region = parseInt(req.body.optimized_label)
     const lowPosition = parseInt(req.body.lowPosition)
     const highPosition = parseInt(req.body.highPosition)
+
     let is_region = false
     let list = null
     if(region == 0){
@@ -25,33 +27,38 @@ const proteinLabGraph = async(req, res)=>{
         })
         is_region = true
     }else{
-        list = await table.findAll({
-            where:{
-                position:{
-                    [Sequelize.Op.gt]:lowPosition-1,
-                    [Sequelize.Op.lt]:highPosition+1
+        if(matrix==0){
+            list = await table.findAll({
+                where:{
+                    position:{
+                        [Sequelize.Op.gt]:lowPosition-1,
+                        [Sequelize.Op.lt]:highPosition+1
+                    },
+                    Seq_AOL: region,
                 },
-                region: region,
-            },
-        })
+            })
+        }else{
+            list = await table.findAll({
+                where:{
+                    position:{
+                        [Sequelize.Op.gt]:lowPosition-1,
+                        [Sequelize.Op.lt]:highPosition+1
+                    },
+                    Reg_SOL: region,
+                },
+            })
+        }
+        
     }
-    let graph_data = null
-    if (is_region){
-        graph_data = list.map((item)=>{
-            return item.region
-        })
-    }else{
-        graph_data = list.map((item)=>{
-            return item.ag
-        })
-    }
-    return res.status(200).send({"all_data": list, "graph_data": graph_data})
+    return res.status(200).send({"all_data": list})
 }
 
 const protein_2_LabGraph = async(req, res)=>{
-    const region = parseInt(req.body.region)
+    const matrix = parseInt(req.body.matrix)
+    const region = parseInt(req.body.optimized_label)
     const lowPosition = parseInt(req.body.lowPosition)
     const highPosition = parseInt(req.body.highPosition)
+
     let is_region = false
     let list = null
     if(region == 0){
@@ -65,33 +72,38 @@ const protein_2_LabGraph = async(req, res)=>{
         })
         is_region = true
     }else{
-        list = await table_2.findAll({
-            where:{
-                position:{
-                    [Sequelize.Op.gt]:lowPosition-1,
-                    [Sequelize.Op.lt]:highPosition+1
+        if(matrix==0){
+            list = await table_2.findAll({
+                where:{
+                    position:{
+                        [Sequelize.Op.gt]:lowPosition-1,
+                        [Sequelize.Op.lt]:highPosition+1
+                    },
+                    Seq_AOL: region,
                 },
-                region: region,
-            },
-        })
+            })
+        }else{
+            list = await table_2.findAll({
+                where:{
+                    position:{
+                        [Sequelize.Op.gt]:lowPosition-1,
+                        [Sequelize.Op.lt]:highPosition+1
+                    },
+                    Reg_SOL: region,
+                },
+            })
+        }
+        
     }
-    let graph_data = null
-    if (is_region){
-        graph_data = list.map((item)=>{
-            return item.region
-        })
-    }else{
-        graph_data = list.map((item)=>{
-            return item.ag
-        })
-    }
-    return res.status(200).send({"all_data": list, "graph_data": graph_data})
+    return res.status(200).send({"all_data": list})
 }
 
 const protein_3_LabGraph = async(req, res)=>{
-    const region = parseInt(req.body.region)
+    const matrix = parseInt(req.body.matrix)
+    const region = parseInt(req.body.optimized_label)
     const lowPosition = parseInt(req.body.lowPosition)
     const highPosition = parseInt(req.body.highPosition)
+
     let is_region = false
     let list = null
     if(region == 0){
@@ -105,33 +117,38 @@ const protein_3_LabGraph = async(req, res)=>{
         })
         is_region = true
     }else{
-        list = await table_3.findAll({
-            where:{
-                position:{
-                    [Sequelize.Op.gt]:lowPosition-1,
-                    [Sequelize.Op.lt]:highPosition+1
+        if(matrix==0){
+            list = await table_3.findAll({
+                where:{
+                    position:{
+                        [Sequelize.Op.gt]:lowPosition-1,
+                        [Sequelize.Op.lt]:highPosition+1
+                    },
+                    Seq_AOL: region,
                 },
-                region: region,
-            },
-        })
+            })
+        }else{
+            list = await table_3.findAll({
+                where:{
+                    position:{
+                        [Sequelize.Op.gt]:lowPosition-1,
+                        [Sequelize.Op.lt]:highPosition+1
+                    },
+                    Reg_SOL: region,
+                },
+            })
+        }
+        
     }
-    let graph_data = null
-    if (is_region){
-        graph_data = list.map((item)=>{
-            return item.region
-        })
-    }else{
-        graph_data = list.map((item)=>{
-            return item.ag
-        })
-    }
-    return res.status(200).send({"all_data": list, "graph_data": graph_data})
+    return res.status(200).send({"all_data": list})
 }
 
 const protein_4_LabGraph = async(req, res)=>{
-    const region = parseInt(req.body.region)
+    const matrix = parseInt(req.body.matrix)
+    const region = parseInt(req.body.optimized_label)
     const lowPosition = parseInt(req.body.lowPosition)
     const highPosition = parseInt(req.body.highPosition)
+
     let is_region = false
     let list = null
     if(region == 0){
@@ -145,33 +162,38 @@ const protein_4_LabGraph = async(req, res)=>{
         })
         is_region = true
     }else{
-        list = await table_4.findAll({
-            where:{
-                position:{
-                    [Sequelize.Op.gt]:lowPosition-1,
-                    [Sequelize.Op.lt]:highPosition+1
+        if(matrix==0){
+            list = await table_4.findAll({
+                where:{
+                    position:{
+                        [Sequelize.Op.gt]:lowPosition-1,
+                        [Sequelize.Op.lt]:highPosition+1
+                    },
+                    Seq_AOL: region,
                 },
-                region: region,
-            },
-        })
+            })
+        }else{
+            list = await table_4.findAll({
+                where:{
+                    position:{
+                        [Sequelize.Op.gt]:lowPosition-1,
+                        [Sequelize.Op.lt]:highPosition+1
+                    },
+                    Reg_SOL: region,
+                },
+            })
+        }
+        
     }
-    let graph_data = null
-    if (is_region){
-        graph_data = list.map((item)=>{
-            return item.region
-        })
-    }else{
-        graph_data = list.map((item)=>{
-            return item.ag
-        })
-    }
-    return res.status(200).send({"all_data": list, "graph_data": graph_data})
+    return res.status(200).send({"all_data": list})
 }
 
 const protein_5_LabGraph = async(req, res)=>{
-    const region = parseInt(req.body.region)
+    const matrix = parseInt(req.body.matrix)
+    const region = parseInt(req.body.optimized_label)
     const lowPosition = parseInt(req.body.lowPosition)
     const highPosition = parseInt(req.body.highPosition)
+
     let is_region = false
     let list = null
     if(region == 0){
@@ -185,27 +207,30 @@ const protein_5_LabGraph = async(req, res)=>{
         })
         is_region = true
     }else{
-        list = await table_5.findAll({
-            where:{
-                position:{
-                    [Sequelize.Op.gt]:lowPosition-1,
-                    [Sequelize.Op.lt]:highPosition+1
+        if(matrix==0){
+            list = await table_5.findAll({
+                where:{
+                    position:{
+                        [Sequelize.Op.gt]:lowPosition-1,
+                        [Sequelize.Op.lt]:highPosition+1
+                    },
+                    Seq_AOL: region,
                 },
-                region: region,
-            },
-        })
+            })
+        }else{
+            list = await table_5.findAll({
+                where:{
+                    position:{
+                        [Sequelize.Op.gt]:lowPosition-1,
+                        [Sequelize.Op.lt]:highPosition+1
+                    },
+                    Reg_SOL: region,
+                },
+            })
+        }
+        
     }
-    let graph_data = null
-    if (is_region){
-        graph_data = list.map((item)=>{
-            return item.region
-        })
-    }else{
-        graph_data = list.map((item)=>{
-            return item.ag
-        })
-    }
-    return res.status(200).send({"all_data": list, "graph_data": graph_data})
+    return res.status(200).send({"all_data": list})
 }
 
 
