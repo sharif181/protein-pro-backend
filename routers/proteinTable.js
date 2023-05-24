@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const multer = require("multer");
-const {loadCsv, protien_2_loadCsv, protien_3_loadCsv, protien_4_loadCsv, protien_5_loadCsv, DeleteAllSpikeTable,DeleteAllProtienTable_2,DeleteAllProtienTable_3,DeleteAllProtienTable_4 ,DeleteAllProtienTable_5} = require("../controllers/uploadProteinTable")
+const {loadCsv, protien_2_loadCsv, protien_3_loadCsv, protien_4_loadCsv, protien_5_loadCsv, DeleteAllSpikeTable,DeleteAllProtienTable_2,DeleteAllProtienTable_3,DeleteAllProtienTable_4 ,DeleteAllProtienTable_5
+, CsvNames} = require("../controllers/uploadProteinTable")
 
 const upload = multer({ dest: "upload_csv/" })
 
@@ -15,5 +16,6 @@ router.post('/delete-all-spike-protien-2', DeleteAllProtienTable_2)
 router.post('/delete-all-spike-protien-3', DeleteAllProtienTable_3)
 router.post('/delete-all-spike-protien-4', DeleteAllProtienTable_4)
 router.post('/delete-all-spike-protien-5', DeleteAllProtienTable_5)
+router.get('/all-csv-names', CsvNames)
 
 module.exports = router
