@@ -50,7 +50,29 @@ const proteinLabGraph = async(req, res)=>{
         }
         
     }
-    return res.status(200).send({"all_data": list})
+    let graph_data = null
+    if (is_region){
+        if(matrix==0){
+            graph_data = list.map((item)=>{
+                return item.Seq_AOL
+            })
+        }else{
+            graph_data = list.map((item)=>{
+                return item.Reg_SOL
+            })
+        } 
+    }else{
+        if(matrix==0){
+            graph_data = list.map((item)=>{
+                return item.Seq_AG
+            })
+        }else{
+            graph_data = list.map((item)=>{
+                return item.Reg_AG
+            })
+        }
+    }
+    return res.status(200).send({"all_data": list, "graph_data": graph_data})
 }
 
 const protein_2_LabGraph = async(req, res)=>{
@@ -95,7 +117,29 @@ const protein_2_LabGraph = async(req, res)=>{
         }
         
     }
-    return res.status(200).send({"all_data": list})
+    let graph_data = null
+    if (is_region){
+        if(matrix==0){
+            graph_data = list.map((item)=>{
+                return item.Seq_AOL
+            })
+        }else{
+            graph_data = list.map((item)=>{
+                return item.Reg_SOL
+            })
+        } 
+    }else{
+        if(matrix==0){
+            graph_data = list.map((item)=>{
+                return item.Seq_AG
+            })
+        }else{
+            graph_data = list.map((item)=>{
+                return item.Reg_AG
+            })
+        }
+    }
+    return res.status(200).send({"all_data": list, "graph_data": graph_data})
 }
 
 const protein_3_LabGraph = async(req, res)=>{
@@ -140,7 +184,29 @@ const protein_3_LabGraph = async(req, res)=>{
         }
         
     }
-    return res.status(200).send({"all_data": list})
+    let graph_data = null
+    if (is_region){
+        if(matrix==0){
+            graph_data = list.map((item)=>{
+                return item.Seq_AOL
+            })
+        }else{
+            graph_data = list.map((item)=>{
+                return item.Reg_SOL
+            })
+        } 
+    }else{
+        if(matrix==0){
+            graph_data = list.map((item)=>{
+                return item.Seq_AG
+            })
+        }else{
+            graph_data = list.map((item)=>{
+                return item.Reg_AG
+            })
+        }
+    }
+    return res.status(200).send({"all_data": list, "graph_data": graph_data})
 }
 
 const protein_4_LabGraph = async(req, res)=>{
@@ -185,7 +251,29 @@ const protein_4_LabGraph = async(req, res)=>{
         }
         
     }
-    return res.status(200).send({"all_data": list})
+    let graph_data = null
+    if (is_region){
+        if(matrix==0){
+            graph_data = list.map((item)=>{
+                return item.Seq_AOL
+            })
+        }else{
+            graph_data = list.map((item)=>{
+                return item.Reg_SOL
+            })
+        } 
+    }else{
+        if(matrix==0){
+            graph_data = list.map((item)=>{
+                return item.Seq_AG
+            })
+        }else{
+            graph_data = list.map((item)=>{
+                return item.Reg_AG
+            })
+        }
+    }
+    return res.status(200).send({"all_data": list, "graph_data": graph_data})
 }
 
 const protein_5_LabGraph = async(req, res)=>{
@@ -230,7 +318,29 @@ const protein_5_LabGraph = async(req, res)=>{
         }
         
     }
-    return res.status(200).send({"all_data": list})
+    let graph_data = null
+    if (is_region){
+        if(matrix==0){
+            graph_data = list.map((item)=>{
+                return item.Seq_AOL
+            })
+        }else{
+            graph_data = list.map((item)=>{
+                return item.Reg_SOL
+            })
+        } 
+    }else{
+        if(matrix==0){
+            graph_data = list.map((item)=>{
+                return item.Seq_AG
+            })
+        }else{
+            graph_data = list.map((item)=>{
+                return item.Reg_AG
+            })
+        }
+    }
+    return res.status(200).send({"all_data": list, "graph_data": graph_data})
 }
 
 
