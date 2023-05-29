@@ -75,6 +75,7 @@ const deleteProduct = async (req, res) =>{
 
 const updateProduct = async (req, res)=>{
     const product = await Product.findByPk(req.body.id, {include: Variant});
+    
     if (product === null) {
         return res.status(400).send({"message": 'Not found!'})
     } else {
@@ -107,8 +108,49 @@ const updateProduct = async (req, res)=>{
                     })
 
                 }else{
-                    variant.set(item)
-                    variant.save()
+                    try{
+                        if(req.body.complimentary && (variant.variant_type === 'leader' || item.variant_type==='leader')){
+                            const price = await stripe.prices.update(
+                                `${variant.stripe_price_id}`,
+                                {active: false}
+                            );
+                            if(price){
+                                const price = await stripe.prices.create({
+                                    unit_amount: 0.5*100,
+                                    currency: process.env.CURRENCY,
+                                    product: product.stripe_pro_id,
+                                  });
+                                item.stripe_price_id = price.id
+                            }
+                            item.price = 0.5
+                            variant.set(item)
+                            await variant.save()
+                        }else{
+                            const pr = await stripe.prices.retrieve(
+                                `${variant.stripe_price_id}`
+                              );
+                            if(parseFloat(pr.unit_amount) !== parseFloat(item.price*100)){
+                                const price = await stripe.prices.update(
+                                    `${variant.stripe_price_id}`,
+                                    {active: false}
+                                );
+                                if(price){
+                                    const price = await stripe.prices.create({
+                                        unit_amount: item.price*100,
+                                        currency: process.env.CURRENCY,
+                                        product: product.stripe_pro_id,
+                                      });
+                                    item.stripe_price_id = price.id
+                                }
+                            }else{
+                                console.log(pr.unit_amount, item.price*100)
+                            }
+                            variant.set(item)
+                            await variant.save()
+                        }
+                    }catch (error){
+                        console.log(error)
+                    }
                 }
             }else{
                 const price = await stripe.prices.create({
